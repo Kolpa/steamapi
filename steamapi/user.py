@@ -1,11 +1,10 @@
-__author__ = 'SmileyBarry'
-
 from .core import APIConnection, SteamObject
-
 from .app import SteamApp
 from .decorators import cached_property, INFINITE, MINUTE, HOUR
-
 import datetime
+
+__author__ = 'SmileyBarry'
+
 
 class SteamUserBadge(SteamObject):
     def __init__(self, badge_id, level, completion_time, xp, scarcity, appid=None):
@@ -169,7 +168,7 @@ class SteamUser(SteamObject):
         """
         :rtype: str
         """
-        return self._summary.personaname
+        return self._summary.personaname.encode('utf-8')
 
     @cached_property(ttl=INFINITE)
     def real_name(self):
